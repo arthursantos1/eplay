@@ -1,104 +1,45 @@
-import Game from '../../../models/Games'
+import { Game } from '../Home'
 import ProductList from '../../ProductList'
+import { useEffect, useState } from 'react'
 
-import resident from '../../../assets/images/resident.png'
-import diablo from '../../../assets/images/diablo.png'
-import zelda from '../../../assets/images/zelda.png'
-import starWars from '../../../assets/images/star_wars.png'
+const Categories = () => {
+  const [gamesAcao, setGamesAcao] = useState<Game[]>([])
+  const [gamesEsporte, setGamesEsporte] = useState<Game[]>([])
+  const [gamesRPG, setGamesRPG] = useState<Game[]>([])
+  const [gamesSimulacao, setGamesSimulacao] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
 
-const promocoes: Game[] = [
-  {
-    id: 1,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['10%', 'R$ 250,00'],
-    image: resident
-  },
-  {
-    id: 2,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['5%', 'R$ 290,00'],
-    image: diablo
-  },
-  {
-    id: 3,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['15%', 'R$ 215,00'],
-    image: zelda
-  },
-  {
-    id: 4,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['20%', 'R$ 200,00'],
-    image: starWars
-  }
-]
+  useEffect(() => {
+    fetch('https://api-ebac.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGamesAcao(res))
+    fetch('https://api-ebac.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGamesEsporte(res))
+    fetch('https://api-ebac.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setGamesRPG(res))
+    fetch('https://api-ebac.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGamesSimulacao(res))
+    fetch('https://api-ebac.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGamesLuta(res))
+  }, [])
 
-const emBreve: Game[] = [
-  {
-    id: 5,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['10%', 'R$ 250,00'],
-    image: resident
-  },
-  {
-    id: 6,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['5%', 'R$ 290,00'],
-    image: diablo
-  },
-  {
-    id: 7,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['15%', 'R$ 215,00'],
-    image: zelda
-  },
-  {
-    id: 8,
-    category: 'Ação',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, sapiente iusto optio officia incidunt eligendi. Excepturi, ipsa maiores mollitia voluptas ipsam fugiat iure! Labore vel est facilis voluptatibus cumque? Nulla',
-    title: 'Resident Evil 4',
-    system: 'Windows',
-    infos: ['20%', 'R$ 200,00'],
-    image: starWars
-  }
-]
-
-const Categories = () => (
-  <>
-    <ProductList games={promocoes} title="RPG" background="gray" />
-    <ProductList games={emBreve} title="Ação" background="black" />
-    <ProductList games={promocoes} title="Aventura" background="gray" />
-    <ProductList games={promocoes} title="FPS" background="black" />
-  </>
-)
+  return (
+    <>
+      <ProductList games={gamesRPG} title="RPG" background="black" />
+      <ProductList games={gamesAcao} title="Ação" background="gray" />
+      <ProductList
+        games={gamesSimulacao}
+        title="Simulação"
+        background="black"
+      />
+      <ProductList games={gamesLuta} title="Luta" background="gray" />
+      <ProductList games={gamesEsporte} title="Esportes" background="black" />
+    </>
+  )
+}
 
 export default Categories
