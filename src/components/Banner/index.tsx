@@ -13,7 +13,7 @@ const Banner = () => {
   useEffect(() => {
     fetch('https://api-ebac.vercel.app/api/eplay/destaque')
       .then((res) => res.json())
-      .then((res) => setGame(res[0]))
+      .then((res) => setGame(res))
   }, [])
 
   if (!game) {
@@ -33,7 +33,7 @@ const Banner = () => {
         </div>
         <Button
           type="link"
-          to="/produto"
+          to={`/product/${game?.id}`}
           title="Clique aqui para aproveita essa oferta"
         >
           Aproveitar
