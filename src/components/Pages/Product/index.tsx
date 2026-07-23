@@ -24,8 +24,8 @@ const Product = () => {
           <b>Plataforma:</b> {game.details.system} <br />
           <b>5Desenvolvedor:</b> {game.details.developer} <br />
           <b>Editora:</b> {game.details.publisher} <br />
-          <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo
-          {game.details.language.join(', ')}.
+          <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo{' '}
+          {game.details.languages.join(', ')}.
         </p>
       </Section>
       <Gallery
