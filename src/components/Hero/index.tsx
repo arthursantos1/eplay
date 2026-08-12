@@ -1,5 +1,5 @@
 import Button from '../Button'
-import { Game } from '../Pages/Home'
+import { Game } from '../../pages/Home'
 import Tag from '../Tag'
 
 import { Banner, Infos } from './styles'

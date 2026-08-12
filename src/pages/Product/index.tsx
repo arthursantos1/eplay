@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
-import Hero from '../../Hero'
-import Section from '../../Section'
-import Gallery from '../../Gallery'
+import Hero from '../../components/Hero'
+import Section from '../../components/Section'
+import Gallery from '../../components/Gallery'
 
-import { useGetGameQuery } from '../../../services/api'
+import { useGetGameQuery } from '../../services/api'
 
 const Product = () => {
   const { id } = useParams()

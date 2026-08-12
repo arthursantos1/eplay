@@ -1,4 +1,4 @@
-import ProductList from '../../ProductList'
+import ProductList from '../../components/ProductList'
 
 import {
   useGetActionGameQuery,
@@ -6,7 +6,7 @@ import {
   useGetRpgGameQuery,
   useGetSimulationGameQuery,
   useGetFightGameQuery
-} from '../../../services/api'
+} from '../../services/api'
 
 const Categories = () => {
   const { data: actionGames } = useGetActionGameQuery()

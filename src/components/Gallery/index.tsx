@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Section from '../Section'
 
-import { GalleryItem } from '../Pages/Home'
+import { GalleryItem } from '../../pages/Home'
 import { Item, Items, Action, Modal, ModalContent } from './styles'
 
 import play from '../../assets/images/botao_play.png'
