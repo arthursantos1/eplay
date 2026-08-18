@@ -20,7 +20,7 @@ const Button = ({
   if (type === 'button') {
     return (
       <S.ButtonContainer
-        type="button"
+        type={type}
         title={title}
         onClick={onClick}
         variant={variant}
