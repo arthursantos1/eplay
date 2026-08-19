@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import Section from '../Section'
-import { GalleryItem } from '../../pages/Home'
 
 import play from '../../assets/images/botao_play.png'
 import zoom from '../../assets/images/mais_zoom.png'
@@ -25,8 +24,6 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
     type: 'image',
     url: ''
   })
-  const [modalEstaAberto, setModalEstaAberto] = useState(false)
-  const [modalUrl, setModalUrl] = useState('')
 
   const getMediaCover = (item: GalleryItem) => {
     if (item.type === 'image') return item.url

@@ -1,5 +1,4 @@
 import Button from '../Button'
-import { Game } from '../../pages/Home'
 import Tag from '../Tag'
 
 import { useDispatch } from 'react-redux'
